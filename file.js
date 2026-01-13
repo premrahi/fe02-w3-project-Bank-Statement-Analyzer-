@@ -72,7 +72,7 @@ const csvRows = summaryArray.map((item) =>
     item.TotalCredit,
     item.TotalDebit,
     item.LargestTransaction,
-    item.SalaryTransactions.join("|"),
+    item.SalaryTransactions.join(" | "),
   ].join(",")
 );
 
