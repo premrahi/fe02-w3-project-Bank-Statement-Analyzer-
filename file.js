@@ -78,6 +78,6 @@ const csvRows = summaryArray.map((item) =>
 
 const finalCSV = csvHeader.join(",") + "\n" + csvRows.join("\n");
 
-fs.writeFileSync("bank_summary", finalCSV);
+fs.writeFileSync("bank_summary.CSV", finalCSV);
 
 console.log(summary);
