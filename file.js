@@ -3,8 +3,10 @@ const fs = require("fs");
 //task-1 reading the csv file
 const bank_statement = fs.readFileSync("fe02_bank.csv", "utf-8");
 
+// here all the rows of the csv file will be split into individual rows
 const rows = bank_statement.trim().split("\n");
 
+//first row of rows will be the header
 const Header = rows[0].split(",");
 
 //task-1 Each row becomes a JavaScript object with column names as keys
@@ -12,6 +14,7 @@ const transactions = rows.slice(1).map((row) => {
   const values = row.split(",");
   const obj = {};
 
+  //now each tanscation will have the header associated to its value
   Header.forEach((head, index) => {
     obj[head.trim()] = values[index].trim();
   });
@@ -23,7 +26,9 @@ const transactions = rows.slice(1).map((row) => {
 transactions.sort((a, b) => new Date(a.Date) - new Date(b.Date));
 
 //task-3filter and analysis
+//we willl create an empty object then fill it with required entries only 
 const summary = {};
+
 
 transactions.forEach((txn) => {
   const txnId = txn.TransactionID;
@@ -32,6 +37,8 @@ transactions.forEach((txn) => {
   const type = txn.Type;
   const amount = Number(txn.Amount);
 
+
+  // creation of obj with required fields
   if (!summary[name]) {
     summary[name] = {
       AccountHolder: name,
