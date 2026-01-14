@@ -80,4 +80,4 @@ const finalCSV = csvHeader.join(",") + "\n" + csvRows.join("\n");
 
 fs.writeFileSync("bank_summary.CSV", finalCSV);
 
-console.log(summary);
+
